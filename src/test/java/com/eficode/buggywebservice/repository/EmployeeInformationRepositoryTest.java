@@ -7,33 +7,23 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.eficode.buggywebservice.domain.EmployeeInformation;
-import com.eficode.buggywebservice.domain.ExperienceLevel;
 import com.eficode.buggywebservice.domain.PersonalInformation;
 import com.eficode.buggywebservice.domain.PreviousJobs;
-import com.eficode.buggywebservice.domain.Skill;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.bson.types.ObjectId;
 import org.hamcrest.collection.IsEmptyCollection;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.isEmptyOrNullString;
 import static org.hamcrest.Matchers.not;
-import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertEquals;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.contains;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-import java.util.stream.StreamSupport;
-
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -68,7 +58,6 @@ public class EmployeeInformationRepositoryTest {
     	assertThat(employeeInfos, not(IsEmptyCollection.empty()));
     	
     	assertThat(employeeInfos, contains(
-                hasProperty("personalInformation", hasProperty("lastName", is(lastName)))));
-    	//assertThat(employeeInfos, hasItems(employeeInfo));
+                hasProperty("personalInformation", hasProperty("lastName", equalTo(lastName)))));
     }
 }
