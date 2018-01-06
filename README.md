@@ -6,16 +6,20 @@ To run the web rest service via Eclipse:
 Run As.. / Debug As.. -> Java application 
 ```
 
-To the service via command line:
+and via command line:
 ```
 mvn spring-boot:run
 ```
 
 ## Environment
 
+### OS
+
+Windows 10
+
 ### MongoDB 3.6
 
-Create config file (mongo.config):
+Config file (mongo.config):
 ```
 dbpath=..\data\db\ 
 port = 27017
