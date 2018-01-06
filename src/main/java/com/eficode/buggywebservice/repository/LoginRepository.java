@@ -31,4 +31,5 @@ public interface LoginRepository extends MongoRepository<LoginInformation,String
     public List<LoginInformation> findLoginRegexQuery(final String username, final String password);
     
     public List<LoginInformation> findByUsernameAndPassword(final String username, final String password);
+
 }

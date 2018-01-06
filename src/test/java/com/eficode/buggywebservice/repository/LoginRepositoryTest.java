@@ -1,8 +1,6 @@
 package com.eficode.buggywebservice.repository;
 
 import com.eficode.buggywebservice.domain.LoginInformation;
-import com.mongodb.Mongo;
-import org.bson.BSON;
 import org.bson.types.ObjectId;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,27 +32,30 @@ public class LoginRepositoryTest {
 
     @Test
     public void testInsertAndSelect() {
+        loginRepository.deleteAll();
         loginRepository.insert(new LoginInformation(ObjectId.get().toString(),"username", "password"));
         LoginInformation loginInformation = loginRepository.findLogin("username", "password");
         assertThat(loginInformation, notNullValue());
-        loginRepository.delete(loginInformation);
+        // loginRepository.delete(loginInformation);
     }
     
     @Test
     public void testInsertAndSelectRegex() {
+        loginRepository.deleteAll();
         loginRepository.insert(new LoginInformation(ObjectId.get().toString(), "username", "password"));
         loginRepository.insert(new LoginInformation(ObjectId.get().toString(), "username", "password"));
         List<LoginInformation> loginInfos = loginRepository.findLoginRegexQuery("username", "password");
-        assertThat(loginInfos, IsCollectionWithSize.hasSize(1));
-        loginRepository.delete(loginInfos);
+        assertThat(loginInfos, IsCollectionWithSize.hasSize(2));
+        //loginRepository.delete(loginInfos);
     }
     
     @Test
     public void testInsertAndSelectQueryMethod() {
+        loginRepository.deleteAll();
         loginRepository.insert(new LoginInformation(ObjectId.get().toString(), "username", "password"));
         loginRepository.insert(new LoginInformation(ObjectId.get().toString(), "username", "password"));
         List<LoginInformation> loginInfos = loginRepository.findByUsernameAndPassword("username", "password");
-        assertThat(loginInfos, IsCollectionWithSize.hasSize(1));
-        loginRepository.delete(loginInfos);
+        assertThat(loginInfos, IsCollectionWithSize.hasSize(2));
+        //loginRepository.delete(loginInfos);
     }
 }
