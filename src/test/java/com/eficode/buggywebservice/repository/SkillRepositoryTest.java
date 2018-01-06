@@ -27,8 +27,6 @@ public class SkillRepositoryTest {
     @Autowired
     private SkillRepository skillRepository;
     
-    // @Transactional
-	// @Rollback(false)
     @Test
     public void insertAndReceiveSkillCreatedWithBuilder() {
     	final String skillName = "Java";
@@ -41,8 +39,6 @@ public class SkillRepositoryTest {
         skillRepository.delete(entity);
     }
 
-    // @Transactional
-	// @Rollback(false)
     @Test
     public void insertSomeAndReceiveFirst() {
     	skillRepository.save(Skill.getBuilder().name("Java").experienceLevel(ExperienceLevel.AVERAGE).build());

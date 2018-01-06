@@ -36,4 +36,17 @@ public class EmployeeInformation {
         this.personalInformation = personalInformation;
         this.id=id;
     }
+
+	public String getId() {
+		return id;
+	}
+
+	public List<PreviousJobs> getPreviousJobs() {
+		return previousJobs;
+	}
+
+	public PersonalInformation getPersonalInformation() {
+		return personalInformation;
+	}
+    
 }

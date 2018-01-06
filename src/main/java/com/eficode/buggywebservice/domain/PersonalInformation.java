@@ -30,4 +30,32 @@ public class PersonalInformation {
         this.zipCode = zipCode;
         this.postalOffice = postalOffice;
     }
+
+	public String getId() {
+		return id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public String getStreetAddress() {
+		return streetAddress;
+	}
+
+	public String getZipCode() {
+		return zipCode;
+	}
+
+	public String getPostalOffice() {
+		return postalOffice;
+	}
 }

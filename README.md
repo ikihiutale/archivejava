@@ -38,6 +38,8 @@ logpath=..\log\mongo.log
 
 ## Test
 
+cURL command line tool and Chrome Postman are used for making API calls
+
 ### Eclipse
 ```
 E.g. Run As / Debug As.. -> JUnit Test -> /codereview/src/test/java/com/eficode/buggywebservice/CodereviewApplicationTests.java
@@ -63,7 +65,7 @@ db.getCollectionNames()
 db.loginInformation.drop()
 ```
 
-### CULR command
+### cULR command
 
 ```
 curl -X POST -i -H "Content-type: application/json" -X POST http://localhost:8080/login -d '{"userName":"username", "password":"password"}'
@@ -76,7 +78,7 @@ db.loginInformation.save( { username: "username", password: "password" } )
 db.loginInformation.find()
 ```
 
-### CULR command
+### cULR command
 
 ```
 curl -X POST -i -H "Content-type: application/json" -X POST http://localhost:8080/login -d '{"userName":"username", "password":"password"}'

@@ -1,14 +1,18 @@
 package com.eficode.buggywebservice.controller;
 
+import com.eficode.buggywebservice.domain.EmployeeInformation;
 import com.eficode.buggywebservice.domain.EmployeeInformationRequest;
 import com.eficode.buggywebservice.domain.EmployeeInformationResponse;
 import com.eficode.buggywebservice.service.EmployeeInformationService;
+
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,10 +39,12 @@ public class EmployeeInformationController {
     private EmployeeInformationService employeeInformationService;
 
     @RequestMapping(path = "/byName",method = RequestMethod.POST)
-    public ResponseEntity<EmployeeInformationResponse> findByName(@RequestBody EmployeeInformationRequest employeeInformationRequest){
+    public ResponseEntity<EmployeeInformationResponse> findByName(@RequestBody EmployeeInformationRequest employeeInformationRequest) {
+    	List<EmployeeInformation> employeeInfos = employeeInformationService.searchByLastName(employeeInformationRequest.lastName);
         return new ResponseEntity<>(
-                new EmployeeInformationResponse(employeeInformationService.searchByLastName(employeeInformationRequest.lastName)), HttpStatus.OK);
+                new EmployeeInformationResponse(employeeInfos), CollectionUtils.isEmpty(employeeInfos) ? HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
+    
     @RequestMapping(path = "/all",method = RequestMethod.GET)
     public ResponseEntity<EmployeeInformationResponse> findAllName(){
         return new ResponseEntity<>(
